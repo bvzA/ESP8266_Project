@@ -1,0 +1,32 @@
+#!/bin/bash
+
+OPER=$1
+DOCK_OPS=-d
+
+if [ -z $OPER ]; then
+  echo "usage: broker start|stop [-d]"
+
+  exit -1
+fi
+
+while getopts ":i" opt; do
+  case ${opt} in
+    d ) # process option h
+        DOCK_OPS=-it
+      ;;
+  esac
+done
+
+command -v docker >/dev/null 2>&1 || { echo >&2 "I require docker but it's not installed.  Aborting."; }
+
+if [ $OPER = "start" ]; then
+    docker run $DOCK_OPS --name iot-broker -p 1883:1883 -p 9001:9001 eclipse-mosquitto
+fi
+
+if [ $OPER = "stop" ]; then
+    docker stop iot-broker
+fi
+
+if [ $OPER = "kill" ]; then
+    docker rm -f iot-broker
+fi
