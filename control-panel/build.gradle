@@ -25,6 +25,9 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+	compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'
+
 }
 
 test {
