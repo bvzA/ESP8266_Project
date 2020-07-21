@@ -9,6 +9,7 @@ import org.eclipse.paho.client.mqttv3.persist.MqttDefaultFilePersistence;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,6 +19,10 @@ public class MqttConfig {
 
     @Value("${broker.url}")
     private String brokerUrl;
+    @Value("${broker.username}")
+    private String brokerUsername;
+    @Value("${broker.password}")
+    private String brokerPassword;
 
 
     @Bean(name = "publisher")
@@ -26,6 +31,11 @@ public class MqttConfig {
 
         var client = new MqttClient(brokerUrl, pubId, new MqttDefaultFilePersistence("./client-persistence"));
         MqttConnectOptions options = new MqttConnectOptions();
+
+        if(StringUtils.hasText(brokerUsername)) {
+            options.setUserName(brokerUsername);
+            options.setPassword(brokerPassword.toCharArray());
+        }
         options.setAutomaticReconnect(true);
         options.setCleanSession(true);
         options.setConnectionTimeout(10);
@@ -41,6 +51,10 @@ public class MqttConfig {
 
         var client = new MqttClient(brokerUrl, pubId, new MqttDefaultFilePersistence("./client-persistence"));
         MqttConnectOptions options = new MqttConnectOptions();
+        if(StringUtils.hasText(brokerUsername)) {
+            options.setUserName(brokerUsername);
+            options.setPassword(brokerPassword.toCharArray());
+        }
         options.setAutomaticReconnect(true);
         options.setCleanSession(true);
         options.setConnectionTimeout(10);
