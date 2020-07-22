@@ -6,6 +6,7 @@ build: clean
 	cd ${src_control_panel_path} && ./gradlew bootJar
 
 install:
+	mkdir -p ${bin_dir} 
 	test -f ${src_control_panel_path}/build/libs/control-panel-*.jar || { echo >&2 "need build!!"; exit 1; }
 	rm -rf ${bin_dir}/*
 	cp -f ${src_control_panel_path}/build/libs/control-panel-*.jar ${bin_dir}/control-panel.jar
