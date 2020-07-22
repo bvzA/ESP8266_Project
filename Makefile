@@ -7,11 +7,7 @@ build: clean
 
 install:
 	test -f ${src_control_panel_path}/build/libs/control-panel-*.jar || { echo >&2 "need build!!"; exit 1; }
-	rm -f ${bin_dir}/control-panel*
-	rm -f ${bin_dir}/broker
-	rm -f ${bin_dir}/.log
-	rm -f ${bin_dir}/.pid
-	rm -rf ${bin_dir}/client-persistence
+	rm -rf ${bin_dir}/*
 	cp -f ${src_control_panel_path}/build/libs/control-panel-*.jar ${bin_dir}/control-panel.jar
 	cp -f ${src_control_panel_path}/src/main/shell/* ${bin_dir}/
 
