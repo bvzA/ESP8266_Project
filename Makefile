@@ -11,6 +11,7 @@ install:
 	rm -rf ${bin_dir}/*
 	cp -f ${src_control_panel_path}/build/libs/control-panel-*.jar ${bin_dir}/control-panel.jar
 	cp -f ${src_control_panel_path}/src/main/shell/* ${bin_dir}/
+	cp -f ${src_control_panel_path}/src/main/resources/application.properties ${bin_dir}/
 
 clean:
 	cd ${src_control_panel_path} && ./gradlew clean
