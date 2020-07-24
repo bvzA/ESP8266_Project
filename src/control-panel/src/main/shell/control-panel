@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo su iotusr
+
 OPER=$1
 
 if [ -z $OPER ]; then

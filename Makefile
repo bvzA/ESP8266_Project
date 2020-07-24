@@ -2,7 +2,7 @@ current_dir=$(shell pwd)
 bin_dir=$(current_dir)/bin
 src_control_panel_path=$(current_dir)/src/control-panel
 
-build: clean
+build: clean, check
 	cd ${src_control_panel_path} && ./gradlew bootJar
 
 install:
