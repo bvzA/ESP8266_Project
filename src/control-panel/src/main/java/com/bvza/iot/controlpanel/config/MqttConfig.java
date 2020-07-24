@@ -29,7 +29,7 @@ public class MqttConfig {
     public MqttClient publisher() throws MqttException {
         String pubId = UUID.randomUUID().toString();
 
-        var client = new MqttClient(brokerUrl, pubId, new MqttDefaultFilePersistence("./client-persistence"));
+        var client = new MqttClient(brokerUrl, pubId);
         MqttConnectOptions options = new MqttConnectOptions();
 
         if(StringUtils.hasText(brokerUsername)) {
@@ -49,7 +49,7 @@ public class MqttConfig {
     public MqttClient subscriber() throws MqttException {
         String pubId = UUID.randomUUID().toString();
 
-        var client = new MqttClient(brokerUrl, pubId, new MqttDefaultFilePersistence("./client-persistence"));
+        var client = new MqttClient(brokerUrl, pubId);
         MqttConnectOptions options = new MqttConnectOptions();
         if(StringUtils.hasText(brokerUsername)) {
             options.setUserName(brokerUsername);
