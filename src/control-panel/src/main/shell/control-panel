@@ -8,7 +8,7 @@ if [ -z $OPER ]; then
   exit -1
 fi
 
-sudo -u iotusr command -v java >/dev/null 2>&1 || { echo >&2 "I require java but it's not installed.  Aborting."; exit 1;}
+command -v java >/dev/null 2>&1 || { echo >&2 "I require java but it's not installed.  Aborting."; exit 1;}
 
 function start {
   curr_dir=`dirname $0`
