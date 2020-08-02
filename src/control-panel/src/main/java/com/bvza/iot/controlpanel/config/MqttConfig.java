@@ -24,12 +24,15 @@ public class MqttConfig {
     @Value("${broker.password}")
     private String brokerPassword;
 
+    @Value("${broker.path.client-persistence}")
+    private String pathClientPersistence;
+
 
     @Bean(name = "publisher")
     public MqttClient publisher() throws MqttException {
         String pubId = UUID.randomUUID().toString();
 
-        var client = new MqttClient(brokerUrl, pubId);
+        var client = new MqttClient(brokerUrl, pubId, new MqttDefaultFilePersistence(pathClientPersistence));
         MqttConnectOptions options = new MqttConnectOptions();
 
         if(StringUtils.hasText(brokerUsername)) {
@@ -49,7 +52,7 @@ public class MqttConfig {
     public MqttClient subscriber() throws MqttException {
         String pubId = UUID.randomUUID().toString();
 
-        var client = new MqttClient(brokerUrl, pubId);
+        var client = new MqttClient(brokerUrl, pubId, new MqttDefaultFilePersistence(pathClientPersistence));
         MqttConnectOptions options = new MqttConnectOptions();
         if(StringUtils.hasText(brokerUsername)) {
             options.setUserName(brokerUsername);
