@@ -14,6 +14,8 @@ release:
 	mkdir -p ${dist_dir}/control-panel
 	cp -f ${src_control_panel_path}/build/libs/control-panel-*.jar ${dist_dir}/control-panel/control-panel.jar
 	cp -f ${src_control_panel_path}/src/main/resources/application-template.properties ${dist_dir}/control-panel/
+	cp -f ${src_control_panel_path}/src/main/shell/cpanel ${dist_dir}/control-panel/
+	cp -f ${src_control_panel_path}/src/main/shell/control-panel.service ${dist_dir}/control-panel/
 	cd ${dist_dir} && tar -zcvf control-panel.tar.gz ./control-panel
 	rm -rf ${dist_dir}/control-panel
 	

@@ -1,0 +1,9 @@
+[Unit]
+Description=Control panel daemon
+After=syslog.target
+ 
+[Service]
+ExecStart=/opt/control-panel/cpanel
+ 
+[Install] 
+WantedBy=multi-user.target

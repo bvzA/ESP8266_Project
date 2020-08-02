@@ -1,0 +1,45 @@
+#!/bin/bash
+
+
+export SPRING_CONFIG_LOCATION=classpath:/application.properties,file:/etc/control-panel/application.conf
+java -jar /opt/control-panel/control-panel.jar
+
+# OPER=$1
+
+# if [ -z $OPER ]; then
+#   echo "usage: control-panel start|stop|restart"
+
+#   exit -1
+# fi
+
+# command -v java >/dev/null 2>&1 || { echo >&2 "I require java but it's not installed.  Aborting."; exit 1;}
+
+# function start {
+#   curr_dir=`dirname $0`
+#   echo curr_dir = $curr_dir
+#   sudo -u iotusr rm -f $curr_dir/.pid
+#   sudo -u iotusr java -jar $curr_dir/control-panel.jar  >> $curr_dir/.log 2>&1 &
+#   sudo -u iotusr echo $! > $curr_dir/.pid
+# }
+
+# function stop {
+#   curr_dir=`dirname $0`
+#   sudo -u iotusr test -f $curr_dir/.pid && sudo -u iotusr kill -SIGTERM $(cat $curr_dir/.pid) 
+#   sudo -u iotusr rm -f $curr_dir/.pid
+# }
+
+# if [ $OPER = "start" ]; then
+#   start
+#   echo $OPER
+# fi
+
+# if [ $OPER = "stop" ]; then
+#   stop
+#   echo $OPER
+# fi
+
+# if [ $OPER = "restart" ]; then
+#   stop
+#   start
+#   echo $OPER
+# fi
