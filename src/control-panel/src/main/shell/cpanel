@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-export SPRING_CONFIG_LOCATION=classpath:/application.properties,file:/etc/control-panel/application.conf
+export SPRING_CONFIG_LOCATION=classpath:/application.properties,file:/etc/control-panel/application.properties
 java -jar /opt/control-panel/control-panel.jar
 
 # OPER=$1
