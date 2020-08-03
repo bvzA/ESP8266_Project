@@ -12,7 +12,11 @@ mkdir -p /etc/control-panel
 cp -f /opt/control-panel/application-template.properties /etc/control-panel/application-template.properties
 
 # service control-panel start/stop/status (System V Init)
-ln -s /opt/control-panel/cpanel /etc/init.d/control-panel
+cp -f /opt/control-panel/cpanel /etc/init.d/control-panel
 
 # systemctl start/stop/status/reload/restart control-panel.service (Systemd)
 ln -s /opt/control-panel/control-panel.service /etc/systemd/system/control-panel.service
+
+systemctl daemon-reload
+
+echo "sudo systemctl start control-panel.service"
