@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -L https://github.com/bvzA/ESP8266_Project/releases/download/v0.4-alpha/control-panel.tar.gz | tar xzv
+curl -L https://github.com/bvzA/ESP8266_Project/releases/download/v0.5-alpha/control-panel.tar.gz | tar xzv
 
 rm -rf /etc/systemd/system/control-panel.service
 rm -rf /etc/init.d/control-panel
